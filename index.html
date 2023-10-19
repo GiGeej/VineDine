@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <!-- Importing Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Importing Custom CSS -->
+    <link href="./assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar / Header -->
+    <nav class="bg-blue-600 p-5 text-white">
+        <h1 class="text-xl">Recipe Finder</h1>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="p-5">
+
+        <!-- Ingredient Input Area -->
+        <section class="mb-5">
+            <!-- Descriptive comment for ingredient input -->
+            <label for="ingredients" class="block text-lg mb-2">Enter Ingredients:</label>
+            <input type="text" id="ingredients" placeholder="e.g. chicken, tomato, garlic" class="p-2 w-full border rounded">
+            <button id="searchButton" class="mt-2 bg-blue-600 text-white p-2 rounded">Find Recipes</button>
+        </section>
+
+        <!-- Results Display Area -->
+        <section id="results" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Recipe cards will be dynamically inserted here based on API results -->
+        </section>
+
+        <!-- Favorites Section (initially hidden) -->
+        <section id="favorites" class="hidden mt-5">
+            <h2 class="text-lg mb-2">Your Favorites:</h2>
+            <!-- Favorited recipes will be displayed here -->
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="./assets/js/scripts.js"></script>
+</body>
+
+</html>
