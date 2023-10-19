@@ -11,40 +11,47 @@ searchButton.addEventListener("click", function() {
     // Fetch recipes from Spoonacular
     fetchRecipes(ingredients)
         .then(recipes => {
-            // For each recipe, fetch wine pairing
-            recipes.forEach(recipe => {
-                fetchWinePairing(recipe.mainIngredient) // This assumes we can determine a main ingredient.
-                    .then(wine => {
-                        displayRecipeWithWine(recipe, wine);
-                    });
+            // Clear previous results
+            resultsSection.innerHTML = '';
+
+            // Limit the number of recipes to display
+            const limitedRecipes = recipes.slice(0, 6);
+
+            // Display each recipe
+            limitedRecipes.forEach(recipe => {
+                displayRecipe(recipe);
             });
         });
 });
 
 function fetchRecipes(ingredients) {
-    const API_KEY = 'YOUR_SPOONACULAR_API_KEY';
+    const API_KEY = '0974748c220e4ae9907f4f301f14405d';
     const endPoint = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients.join(',')}&apiKey=${API_KEY}`;
     
     return fetch(endPoint)
         .then(response => response.json());
 }
 
-function fetchWinePairing(ingredient) {
-    const API_KEY = 'YOUR_GLOBAL_WINE_SCORE_API_KEY';
-    const endPoint = `https://api.globalwinescore.com/globalwinescores/latest/?wine=${ingredient}&apiKey=${API_KEY}`;
+function fetchRecipeDetails(recipeId) {
+    const API_KEY = '0974748c220e4ae9907f4f301f14405d';
+    const endPoint = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`;
     
     return fetch(endPoint)
         .then(response => response.json());
 }
 
-function displayRecipeWithWine(recipe, wine) {
+async function displayRecipe(recipe) {
+    // Fetch the detailed information for the recipe
+    const recipeDetails = await fetchRecipeDetails(recipe.id);
+    
     const recipeCard = `
         <div class="card">
             <img src="${recipe.image}" alt="${recipe.title}">
             <h3>${recipe.title}</h3>
-            <p>${recipe.description}</p>
-            <h4>Wine Pairing: ${wine.name}</h4>
-            <p>${wine.description}</p>
+            <p>${recipeDetails.summary || 'No description available.'}</p>
+            <a href="${recipeDetails.sourceUrl || '#'}" target="_blank">
+                <button>View Full Recipe</button>
+            </a>
         </div>
     `;
 
@@ -52,4 +59,3 @@ function displayRecipeWithWine(recipe, wine) {
 }
 
 // TODO: Functions for saving and displaying favorite recipes using client-side storage.
-
