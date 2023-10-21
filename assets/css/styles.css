@@ -1,67 +1,81 @@
 /* Reset and Base Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 /* Input Area */
 #ingredients {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 #searchButton {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 /* Recipe Cards */
 .card {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 20px;
-    margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px 0;
 }
 
 .card img {
-    max-width: 100%;
-    border-radius: 4px;
+  max-width: 100%;
+  border-radius: 4px;
 }
 
 .card h3 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 /* Wine Pairing Styles */
 h4 {
-    margin-top: 20px;
-    color: #8a2f58; /* A wine-like color */
+  margin-top: 20px;
+  color: #8a2f58; /* A wine-like color */
 }
 
 Button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 /* ... Additional styles for filters, favorites, and other elements ... */
+
+.recipe-button {
+  background-color: #5a67d8; /* Light blue color */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px; /* Rounded edges */
+  cursor: pointer;
+  margin: 5px;
+}
+
+.recipe-button:hover {
+  background-color: #4863c2; /* Darker blue on hover */
+}

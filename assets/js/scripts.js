@@ -83,12 +83,12 @@ resultsSection.addEventListener("click", function (event) {
     // Create an object to store recipe data
     const savedRecipe = {
       title: recipeTitle,
-      image: recipeImage,
+      url: recipeImage,
       details: recipeDetails,
     };
 
     // Generate a unique key for this recipe (you can customize this)
-    const recipeKey = "recipe_" + Date.now();
+    const recipeKey = "recipe_" + "fav";
 
     // Save the recipe to local storage
     localStorage.setItem(recipeKey, JSON.stringify(savedRecipe));
