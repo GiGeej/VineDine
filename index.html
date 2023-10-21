@@ -16,7 +16,14 @@
   <body class="bg-gray-100">
     <!-- Navbar / Header -->
     <nav class="bg-blue-600 p-5 text-white">
-      <h1 class="text-xl">Recipe Finder</h1>
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl">Recipe Finder</h1>
+        <!-- Navigation Links -->
+        <div class="space-x-3">
+          <a href="#" class="text-white">Home</a>
+          <a href="fav-recipes.html" class="text-white">Favorited Recipes</a>
+        </div>
+      </div>
     </nav>
 
     <!-- Main Content Area -->
@@ -45,15 +52,10 @@
       <section id="results" class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <!-- Recipe cards will be dynamically inserted here based on API results -->
       </section>
-
-      <!-- Favorites Section (initially hidden) -->
-      <section id="favorites" class="hidden mt-5">
-        <h2 class="text-lg mb-2">Your Favorites:</h2>
-        <!-- Favorited recipes will be displayed here -->
-      </section>
     </main>
 
     <!-- Scripts -->
     <script src="./assets/js/scripts.js"></script>
+    <script src="./assets/js/fav-recipes.js"></script>
   </body>
 </html>
