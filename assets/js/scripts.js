@@ -41,31 +41,59 @@ function fetchRecipeDetails(recipeId) {
   return fetch(endPoint).then((response) => response.json());
 }
 
+// Function to save the state in local storage
+function saveAppState(state) {
+  localStorage.setItem("appState", JSON.stringify(state));
+}
+
+// Function to load the state from local storage
+function loadAppState() {
+  const savedState = localStorage.getItem("appState");
+  return savedState ? JSON.parse(savedState) : null;
+}
+
 async function displayRecipe(recipe) {
   // Fetch the detailed information for the recipe
   const recipeDetails = await fetchRecipeDetails(recipe.id);
 
   const recipeCard = `
-  <div class="card">
-    <img src="${recipe.image}" alt="${recipe.title}">
-    <h3>${recipe.title}</h3>
-    <p>${recipeDetails.summary || "No description available."}</p>
-    <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
-      <button>View Full Recipe</button>
-    </a>
-    <a href="#">
-      <button>Pair with Wine</button>
-    </a>
-    <span>
-      <button class="heart-icon">❤️</button>
-    </span>
-  </div>
-`;
+    <div class="card">
+      <img src="${recipe.image}" alt="${recipe.title}">
+      <h3>${recipe.title}</h3>
+      <p>${recipeDetails.summary || "No description available."}</p>
+      <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
+        <button>View Full Recipe</button>
+      </a>
+      <a href="#">
+        <button>Pair with Wine</button>
+      </a>
+      <span>
+        <button class="heart-icon">❤️</button>
+      </span>
+    </div>
+  `;
 
+  // Update the results section
   resultsSection.innerHTML += recipeCard;
+
+  // Save the current state in local storage
+  saveAppState({
+    resultsHTML: resultsSection.innerHTML,
+  });
 }
 
+// Load the state when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+  const savedState = loadAppState();
+  if (savedState) {
+    resultsSection.innerHTML = savedState.resultsHTML;
+  }
+});
+
 // TODO: Functions for saving and displaying favorite recipes using client-side storage.
+
+// Event listener for the heart emoji button using event delegation
+// ...
 
 // Event listener for the heart emoji button using event delegation
 resultsSection.addEventListener("click", function (event) {
@@ -83,12 +111,12 @@ resultsSection.addEventListener("click", function (event) {
     // Create an object to store recipe data
     const savedRecipe = {
       title: recipeTitle,
-      url: recipeImage,
+      url: recipeImage, // Update this to store the image URL or other relevant data
       details: recipeDetails,
     };
 
-    // Generate a unique key for this recipe (you can customize this)
-    const recipeKey = "recipe_" + "fav";
+    // Generate a unique key for this recipe using the recipe title
+    const recipeKey = "recipe_" + recipeTitle.replace(/\s/g, "_");
 
     // Save the recipe to local storage
     localStorage.setItem(recipeKey, JSON.stringify(savedRecipe));
@@ -97,3 +125,5 @@ resultsSection.addEventListener("click", function (event) {
     heartButton.classList.add("saved-heart");
   }
 });
+
+// ...
