@@ -46,12 +46,25 @@
         >
           Find Recipes
         </button>
+        <button
+        id="cocktailButton"
+        class="mt-2 bg-blue-600 text-white p-2 rounded"
+      >
+        Find Drink
+      </button>
       </section>
 
       <!-- Results Display Area -->
       <section id="results" class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <!-- Recipe cards will be dynamically inserted here based on API results -->
       </section>
+      
+      <div id="cocktail-info">
+        <h1 id="cocktail-name"></h1>
+        <img id="cocktail-image" src="" alt="Cocktail Image">
+        <p id="cocktail-description"></p>
+      </div>
+      
     </main>
 
     <!-- Scripts -->

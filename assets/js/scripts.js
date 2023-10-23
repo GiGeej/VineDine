@@ -126,4 +126,33 @@ resultsSection.addEventListener("click", function (event) {
   }
 });
 
+// URL of the API
+const API_URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+
+// Function to fetch and display cocktail data
+function fetchAndDisplayCocktail() {
+    fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+            const cocktail = data.drinks[0];
+
+            // Extract the relevant details from the API response
+            const cocktailName = cocktail.strDrink;
+            const cocktailImage = cocktail.strDrinkThumb;
+            const cocktailDescription = cocktail.strInstructions;
+
+            // Display the details on the page
+            document.getElementById('cocktail-name').textContent = cocktailName;
+            document.getElementById('cocktail-image').src = cocktailImage;
+            document.getElementById('cocktail-description').textContent = cocktailDescription;
+        })
+        .catch(error => {
+            console.error("There was an error fetching the cocktail data:", error);
+        });
+}
+
+// Add event listener to the button
+document.getElementById('cocktailButton').addEventListener('click', fetchAndDisplayCocktail);
+
+
 // ...
