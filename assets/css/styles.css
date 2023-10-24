@@ -1,9 +1,20 @@
 /* Reset and Base Styles */
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
+  font-family: "quattrocento", sans-serif;
+  background-color: #36454F;
   margin: 0;
   padding: 0;
+}
+
+nav {
+  background-color: #808080;
+  height: 75px;
+}
+
+.nav-main {
+  font-size: xx-large;
+  padding-top: 5px;
+  padding-left: 10px;
 }
 
 .container {
@@ -14,10 +25,11 @@ body {
 
 /* Input Area */
 #ingredients {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  align-content: center;
 }
 
 #searchButton {
@@ -31,17 +43,30 @@ body {
 }
 
 /* Recipe Cards */
+
 .card {
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  background-color: #cac8c8;
+  box-shadow: 0 10px 10px rgba(86, 86, 86, 0.1);
+  border-radius: 7px;
   padding: 20px;
   margin: 20px 0;
+  max-width: 100%;
 }
 
-.card img {
-  max-width: 100%;
-  border-radius: 4px;
+.img-cont {
+  width: 40%;
+  float: left;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+img{
+  border-radius: 10px;
+}
+
+.content-cont {
+  width: 60%;
+  float: right;
 }
 
 .card h3 {
@@ -64,6 +89,11 @@ Button {
   margin-top: 10px;
 }
 
+footer {
+  background-color: #808080;
+  height: 75px;
+}
+
 /* ... Additional styles for filters, favorites, and other elements ... */
 
 .recipe-button {
@@ -79,3 +109,67 @@ Button {
 .recipe-button:hover {
   background-color: #4863c2; /* Darker blue on hover */
 }
+
+h3 {
+  font-size: 150%;
+  font-style: bolder;
+}
+
+/* HERO IMAGE SECTION */
+
+.hero-image {
+  background-image: url(/assets/Images/VineDine_mainImage.jpg);
+  height: 80vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-image-search {
+  background-image: url(/assets/Images/VineDine_mainImage.jpg);
+  height: 35vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-input {
+  align-items: center;
+  position: relative;
+  color: black;
+}
+
+.main-text {
+  font-size: 300%;
+  font-style: italic;
+  padding-bottom: 20px;
+}
+
+.secondary-text {
+  font-size: 150%;
+  color: black;
+}
+
+ @media screen and (max-width: 1377px) {
+  .hero-text {
+    padding-top: 25px;
+  }
+ }
+
+ /* FAVOURITES PAGE */
+ .favorites {
+  width: 40%;
+  float: left;
+  height: 100vh;
+ }
