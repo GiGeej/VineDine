@@ -67,21 +67,22 @@ async function displayRecipe(recipe) {
   fetchAndDisplayCocktail().then((cocktail) => {
     const recipeCard = `
     <div class="card">
-    <div class="button-container">
-      <button class="heart-icon">❤️</button>
-    </div>
+  <div class="recipe-cocktail-container">
+    <!-- Recipe details -->
     <div class="recipe-content">
       <div class="img-cont">
-        <img src="${recipe.image}" alt="${recipe.title}">
+        <img class="recipe-image" src="${recipe.image}" alt="${recipe.title}">
       </div>
       <div class="content-cont">
         <h3>${recipe.title}</h3>
         <p>${recipeDetails.summary || "No description available."}</p>
-        <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
-          <button>View Full Recipe</button>
-        </a>
+        <a href="${
+          recipeDetails.sourceUrl || "#"
+        }" target="_blank">View Full Recipe</a>
+        <button class="recipe-button">View Recipe</button> <!-- Button to view food recipe -->
       </div>
     </div>
+    
     <!-- Cocktail details -->
     <div class="cocktail-content">
       <div class="cocktail-details">
@@ -90,12 +91,15 @@ async function displayRecipe(recipe) {
       cocktail.name
     }">
         <p>${cocktail.description}</p>
-        <button class="cocktail-button">View Cocktail Recipe</button>
+        <button class="cocktail-button">View Cocktail Recipe</button> <!-- Button to view cocktail recipe -->
       </div>
     </div>
   </div>
   
-    `;
+  <div class="button-container">
+    <button class="heart-icon">❤️</button>
+  </div>
+</div>`;
 
     // Update the results section
     resultsSection.innerHTML += recipeCard;
