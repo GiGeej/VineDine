@@ -11,25 +11,54 @@
     />
     <!-- Importing Custom CSS -->
     <link href="./assets/css/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
   </head>
 
   <body class="bg-gray-100">
     <!-- Navbar / Header -->
-    <nav class="bg-blue-600 p-5 text-white">
+    <nav class="p-5 text-white">
       <div class="flex items-center justify-between">
-        <h1 class="text-xl">Recipe Finder</h1>
+        <h1 class="text-xl nav-main">Vine Dine</h1>
         <!-- Navigation Links -->
         <div class="space-x-3">
-          <a href="#" class="text-white">Home</a>
+          <a href="#" class="text-white" id="home">Home</a>
           <a href="fav-recipes.html" class="text-white">Favorited Recipes</a>
         </div>
       </div>
     </nav>
 
+    <div class="hero-image visible" id="hero">
+        <div class="hero-text">
+            <h1 class="text-xl main-text"> Stop Cooking and Start Creating</h1>
+            <p class="secondary-text"> Enter Your Ingredients Below</p>
+            <section class="mb-5 hero-input">
+                <!-- Descriptive comment for ingredient input -->
+                <label for="ingredients" class="block text-lg mb-2 hidden"
+                  >Enter Ingredients:</label
+                >
+                <input
+                  type="text"
+                  id="ingredients"
+                  placeholder="e.g. chicken, tomato, garlic"
+                  class="p-2 w-full border rounded text-dark"
+                />
+                <button
+                  id="searchButton"
+                  class="mt-2 bg-blue-600 text-white p-2 rounded"
+                >
+                  Find Recipes
+                </button>
+              </section>
+        </div>
+           
+
+
+    </div>
+
     <!-- Main Content Area -->
-    <main class="p-5">
+    <main class="p-5 bg-dark">
       <!-- Ingredient Input Area -->
-      <section class="mb-5">
+      <section class="mb-5 hidden">
         <!-- Descriptive comment for ingredient input -->
         <label for="ingredients" class="block text-lg mb-2"
           >Enter Ingredients:</label
@@ -66,6 +95,18 @@
       </div>
       
     </main>
+
+    <footer>
+        <footer class="p-5 text-white">
+            <div class="flex items-center justify-between">
+              <h1 class="text-xl nav-main">Find Us @VineDine</h1>
+              <!-- Navigation Links -->
+              <div class="space-x-10">
+                <a> © Vine Dine 2023 </a>
+                <a href="fav-recipes.html" class="text-white">View Your Favorited Recipes</a>
+              </div>
+            </div>
+        </footer>
 
     <!-- Scripts -->
     <script src="./assets/js/scripts.js"></script>

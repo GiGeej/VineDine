@@ -10,13 +10,14 @@
     />
     <!-- Importing Custom CSS -->
     <link href="./assets/css/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
   </head>
 
   <body class="bg-gray-100">
     <!-- Navbar / Header -->
-    <nav class="bg-blue-600 p-5 text-white">
+    <nav class="p-5 text-white">
       <div class="flex items-center justify-between">
-        <h1 class="text-xl">Your Favourite Recipes</h1>
+        <h1 class="text-xl nav-main">Your Favourite Recipes</h1>
         <!-- Navigation Links -->
         <div class="space-x-3">
           <a href="index.html" class="text-white">Home</a>
@@ -25,13 +26,29 @@
       </div>
     </nav>
     <!-- Main Content Area -->
-    <main class="p-5">
+    <main class="p-5 bg-gray-100">
       <!-- Favorites Section (initially hidden) -->
-      <section class="" id="favorites">
+      <div class="favorites" id="favorites">
         <h2 class="">Your Favorites:</h2>
         <!-- Favorited recipes will be displayed here -->
-      </section>
+      </div>
+      <div id="recipe-display">
+
+      </div>
     </main>
+
+   <!-- <footer>
+      <footer class="p-5 text-white">
+          <div class="flex items-center justify-between">
+            <h1 class="text-xl nav-main">Find Us @VineDine</h1>
+Navigation Links
+            <div class="space-x-10">
+              <a> © Vine Dine 2023 </a>
+              <a href="fav-recipes.html" class="text-white">View Your Favorited Recipes</a>
+            </div>
+          </div>
+      </footer> -->
+
     <script src="./assets/js/fav-recipes.js"></script>
   </body>
 </html>

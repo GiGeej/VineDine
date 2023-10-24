@@ -4,8 +4,18 @@ const searchButton = document.getElementById("searchButton");
 const resultsSection = document.getElementById("results");
 const favoritesSection = document.getElementById("favorites");
 
+
 // Event Listener for Search Button
+
 searchButton.addEventListener("click", function () {
+
+  const heroSection = document.getElementById("hero");
+
+  heroSection.classList.add("hero-image-search");
+  heroSection.classList.remove("hero-image");
+});
+searchButton.addEventListener("click", function () {
+
   const ingredients = ingredientsInput.value
     .split(",")
     .map((item) => item.trim());
@@ -57,19 +67,23 @@ async function displayRecipe(recipe) {
   const recipeDetails = await fetchRecipeDetails(recipe.id);
 
   const recipeCard = `
-    <div class="card">
-      <img src="${recipe.image}" alt="${recipe.title}">
-      <h3>${recipe.title}</h3>
-      <p>${recipeDetails.summary || "No description available."}</p>
-      <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
-        <button>View Full Recipe</button>
-      </a>
-      <a href="#">
-        <button>Pair with Wine</button>
-      </a>
-      <span>
-        <button class="heart-icon">❤️</button>
-      </span>
+  <div class="card">
+  <div class="img-cont">
+  <img src="${recipe.image}" alt="${recipe.title}">
+    </div>
+  <div class="content-cont">
+    <h3>${recipe.title}</h3>
+    <p>${recipeDetails.summary || "No description available."}</p>
+    <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
+      <button>View Full Recipe</button>
+    </a>
+  <a href="#">
+    <button>Pair with Wine</button>
+  </a>
+  <span>
+    <button class="heart-icon">❤️</button>
+  </span>
+    </div>
     </div>
   `;
 
@@ -81,6 +95,17 @@ async function displayRecipe(recipe) {
     resultsHTML: resultsSection.innerHTML,
   });
 }
+
+const homeReturn = document.getElementById("home")
+homeReturn.addEventListener("click", function () {
+
+  const heroSection = document.getElementById("hero");
+
+  heroSection.classList.add("hero-image");
+  heroSection.classList.remove("hero-image-search");
+
+  //remove text left in input box
+})
 
 // Load the state when the page loads
 document.addEventListener("DOMContentLoaded", () => {
