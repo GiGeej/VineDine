@@ -1,6 +1,6 @@
 // DOM Elements
 const favoritesSection = document.getElementById("favorites");
-const recipeDisplay = document.getElementById("recipe-diplay")
+const recipeDisplay = document.getElementById("recipe-diplay");
 
 //Function to display saved recipes
 function displaySavedRecipes() {
@@ -44,40 +44,34 @@ favoritesSection.addEventListener("click", function (event) {
   if (event.target.tagName === "BUTTON") {
     const recipeTitle = event.target.textContent;
     const key = "recipe_" + "fav"; // Use the same key pattern used for saving
-    const recipeDetails = JSON.parse(localStorage.getItem(recipeDetails))
+
+    // Retrieve saved recipe and details from localStorage
     const savedRecipe = JSON.parse(localStorage.getItem(key));
-    const recipeDescription = JSON.parse(localStorage.getItem(recipeDetails.details));
-    const recipeUrl = JSON.parse(localStorage(recipeDetails.url));
 
-    //console.log("Recipe Title:", recipeTitle);
-    //console.log("Key:", key);
-    //console.log("Saved Recipe:", savedRecipe);
-    //console.log(recipeDetails);
-    //console.log("description", recipeDescription);
-    //console.log("url", recipeUrl);
+    // Check if the savedRecipe object contains details and URL
+    if (savedRecipe) {
+      const recipeDetails = savedRecipe.details;
+      const recipeUrl = savedRecipe.url;
 
 
-    const recipeCard = `
-  <div class="recipe-card">
-    <div>
-      <h3>${recipeTitle}</h3>
-      <p>${recipeDescription}</p>
-    </div>
-    <div>
-        <button>
-          ${recipeUrl}
-        </button>
-    </div>
-  </div>
-`;
-recipeDisplay.innerHTML += recipeCard;
+      // Find Elements on the HTML Page
+      const cardTitle = document.getElementById("recipe-title");
+      const cardDescription = document.getElementById("recipe-description");
+      const cardURL = document.getElementById("recipe-URL");
 
-    //TODO - send to recipe details URL
-    if (savedRecipe && recipeDetails.sourceUrl) {
-      window.location.href = recipeDetails.sourceUrl;
+      // Add Text Content to the Page
+      cardTitle.textContent = recipeTitle;
+      cardDescription.textContent = recipeDetails;
+      cardURL.textContent = recipeUrl;
+
+      // Redirect to recipe details URL if available
+      if (recipeDetails.sourceUrl) {
+        window.location.href = recipeDetails.sourceUrl;
+      }
     }
   }
 });
+
 
 // Ensure the function to display saved recipes is called when the DOM is ready
 document.addEventListener("DOMContentLoaded", displaySavedRecipes);
@@ -90,18 +84,6 @@ function displayCard(recipe) {
 
 
 
-/*<div class="card">
-<div class="content-cont">
-  <h3>${recipeTitle}</h3>
-  <p>${recipeDetails.summary || "No description available."}</p>
-  <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
-    <button>View Full Recipe</button>
-  </a>
-<a href="#">
-  <button>Pair with Wine</button>
-</a>
-  </div>
-  </div>*/
 
 
  
