@@ -1,24 +1,34 @@
+<!-- Setting the DOCTYPE as HTML5 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Specifying character encoding for the document -->
     <meta charset="UTF-8" />
+    <!-- Making sure the web page is responsive on all device sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title displayed on the browser tab -->
     <title>Recipe Finder</title>
-    <!-- Importing Tailwind CSS -->
+    
+    <!-- Importing Tailwind CSS for utility-based styles -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    
     <!-- Importing Custom CSS -->
     <link href="./assets/css/styles.css" rel="stylesheet" />
+    
+    <!-- Importing a custom Google font -->
     <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
   </head>
 
   <body class="bg-gray-100">
-    <!-- Navbar / Header -->
+    <!-- Navbar/Header Section -->
     <nav class="p-5 text-white">
       <div class="flex items-center justify-between">
-        <h1 class="text-xl nav-main">Vine Dine</h1>
+        <!-- Brand Name -->
+        <h1 class="text-xl nav-main">VineDine</h1>
+        
         <!-- Navigation Links -->
         <div class="space-x-3">
           <a href="#" class="text-white" id="home">Home</a>
@@ -27,54 +37,59 @@
       </div>
     </nav>
 
+    <!-- Hero Section with a background image -->
     <div class="hero-image visible" id="hero">
         <div class="hero-text">
-            <h1 class="text-xl main-text"> Stop Cooking and Start Creating</h1>
-            <p class="secondary-text"> Enter Your Ingredients Below</p>
+            <!-- Hero headline -->
+            <h1 class="text-xl main-text">Stop Cooking and Start Creating</h1>
+            <!-- Hero subtext -->
+            <p class="secondary-text">Enter your pantry ingredients below</p>
             <section class="mb-5 hero-input">
-                <!-- Descriptive comment for ingredient input -->
-                <label for="ingredients" class="block text-lg mb-2 hidden"
+                <!-- Ingredient input label (currently hidden) -->
+                <label for="ingredientslabel" class="block text-lg mb-2 hidden"
                   >Enter Ingredients:</label
                 >
+                <!-- Ingredient input field -->
                 <input
                   type="text"
                   id="ingredients"
                   placeholder="e.g. chicken, tomato, garlic"
                   class="p-2 w-full border rounded text-dark"
                 />
+                <!-- Button to trigger the recipe search -->
                 <button
                   id="searchButton"
                   class="mt-2 bg-blue-600 text-white p-2 rounded"
                 >
                   Find Recipes
                 </button>
-              </section>
+            </section>
         </div>
-           
-
-
     </div>
 
     <!-- Main Content Area -->
-    <main class="p-5 bg-dark">
-      <!-- Ingredient Input Area -->
+    <main class="bg-dark" id="maincontent">
+      <!-- Ingredient Input Area (hidden by default) -->
       <section class="mb-5 hidden">
-        <!-- Descriptive comment for ingredient input -->
+        <!-- Ingredient input label -->
         <label for="ingredients" class="block text-lg mb-2"
           >Enter Ingredients:</label
         >
+        <!-- Ingredient input field -->
         <input
           type="text"
           id="ingredients"
           placeholder="e.g. chicken, tomato, garlic"
           class="p-2 w-full border rounded"
         />
+        <!-- Button to trigger the recipe search -->
         <button
           id="searchButton"
           class="mt-2 bg-blue-600 text-white p-2 rounded"
         >
           Find Recipes
         </button>
+        <!-- Button to find drinks -->
         <button
         id="cocktailButton"
         class="mt-2 bg-blue-600 text-white p-2 rounded"
@@ -83,34 +98,34 @@
       </button>
       </section>
 
-      <!-- Results Display Area -->
+      <!-- Area where search results (recipe cards) will be displayed -->
       <section id="results" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <!-- Recipe cards will be dynamically inserted here based on API results -->
+        <!-- Placeholder for dynamic content. Recipe cards will be injected here based on API results -->
       </section>
-      
-      <div id="cocktail-info">
-        <h1 id="cocktail-name"></h1>
-        <img id="cocktail-image" src="" alt="Cocktail Image">
-        <p id="cocktail-description"></p>
-      </div>
-      
     </main>
 
-    <footer>
-        <footer class="p-5 text-white">
-            <div class="flex items-center justify-between">
-              <h1 class="text-xl nav-main">Find Us @VineDine</h1>
-              <!-- Navigation Links -->
-              <div class="space-x-10">
-                <a> © Vine Dine 2023 </a>
-                <a href="fav-recipes.html" class="text-white">View Your Favorited Recipes</a>
-              </div>
-            </div>
-        </footer>
+    <!-- Footer Section -->
+    <footer class="p-5 text-white">
+        <div class="flex items-center justify-between">
+          <!-- Footer Brand Name -->
+          <h1 class="text-xl nav-main">Find Us @VineDine</h1>
+          
+          <!-- Footer Links -->
+          <div class="space-x-10">
+            <!-- Copyright Info -->
+            <a> © VineDine 2023 </a>
+            <a href="./fav-recipes.html" class="text-white">View Your Favorited Recipes</a>
+          </div>
+        </div>
+    </footer>
 
-    <!-- Scripts -->
+    <!-- Importing JavaScript files -->
+
+    <!-- Custom scripts for the webpage functionality -->
     <script src="./assets/js/scripts.js"></script>
     <script src="./assets/js/fav-recipes.js"></script>
+
+    <!-- External library for making HTTP requests -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>

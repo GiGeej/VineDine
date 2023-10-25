@@ -65,36 +65,37 @@ async function displayRecipe(recipe) {
 
   // Fetch and display a unique cocktail for this recipe
   fetchAndDisplayCocktail().then((cocktail) => {
+    // Create an unordered list for cocktail ingredients and measures
+    let cocktailIngredientsList = '<ul>';
+    for (let i = 0; i < cocktail.ingredients.length; i++) {
+      cocktailIngredientsList += `<li>${cocktail.measures[i]} ${cocktail.ingredients[i]}</li>`;
+    }
+    cocktailIngredientsList += '</ul>';
+
+    // Construct the Google search URL using the encoded cocktail name followed by "cocktail"
+    const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(cocktail.name + ' cocktail')}`;
+
+
     const recipeCard = `
-    <div class="card">
-    <div class="button-container">
-      <button class="heart-icon">❤️</button>
-    </div>
-    <div class="recipe-content">
-      <div class="img-cont">
-        <img src="${recipe.image}" alt="${recipe.title}">
-      </div>
-      <div class="content-cont">
-        <h3>${recipe.title}</h3>
-        <p>${recipeDetails.summary || "No description available."}</p>
+    <div class="project-grid">
+
+    <div class="project-box">
         <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
-          <button>View Full Recipe</button>
+            <img src="${recipe.image}" alt="${recipe.title}">
+            <h3>${recipe.title}</h3>
+            <p>${recipeDetails.summary || "No description available."}</p>
         </a>
-      </div>
     </div>
-    <!-- Cocktail details -->
-    <div class="cocktail-content">
-      <div class="cocktail-details">
-        <h3>${cocktail.name}</h3>
-        <img class="cocktail-image" src="${cocktail.image}" alt="${
-      cocktail.name
-    }">
-        <p>${cocktail.description}</p>
-        <button class="cocktail-button">View Cocktail Recipe</button>
-      </div>
+
+    <div class="project-box">
+        <a href="${googleSearchUrl}" target="_blank">
+            <img src="${cocktail.image}" alt="${cocktail.name}">
+            <h3>${cocktail.name}</h3>
+            <p>${cocktail.description}</p>
+            ${cocktailIngredientsList}
+        </a>
     </div>
-  </div>
-  
+
     `;
 
     // Update the results section
@@ -178,10 +179,25 @@ function fetchAndDisplayCocktail() {
       const cocktailImage = cocktail.strDrinkThumb;
       const cocktailDescription = cocktail.strInstructions;
 
+      // Extract all ingredients and measures
+      const ingredients = [];
+      const measures = [];
+      for (let i = 1; i <= 15; i++) {
+        const ingredient = cocktail[`strIngredient${i}`];
+        const measure = cocktail[`strMeasure${i}`];
+
+        if (ingredient && ingredient.trim() !== "") {
+          ingredients.push(ingredient);
+          measures.push(measure ? measure.trim() : "");
+        }
+      }
+
       return {
         name: cocktailName,
         image: cocktailImage,
         description: cocktailDescription,
+        ingredients: ingredients,
+        measures: measures
       };
     })
     .catch((error) => {

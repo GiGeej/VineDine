@@ -1,9 +1,17 @@
-/* Reset and Base Styles */
+/* General Reset and Base Styles */
+
+html {
+  height: 100%;
+}
+
 body {
   font-family: "quattrocento", sans-serif;
   background-color: #36454F;
   margin: 0;
   padding: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 nav {
@@ -23,7 +31,8 @@ nav {
   padding: 20px;
 }
 
-/* Input Area */
+/* Styles related to the Input Area */
+
 #ingredients {
   width: 80%;
   padding: 10px;
@@ -32,7 +41,7 @@ nav {
   align-content: center;
 }
 
-#searchButton {
+#searchButton, Button {
   padding: 10px 20px;
   background-color: #333;
   color: #fff;
@@ -42,7 +51,7 @@ nav {
   margin-top: 10px;
 }
 
-/* Recipe Cards */
+/* Styles related to Recipe Cards */
 
 .card {
   background-color: #cac8c8;
@@ -60,7 +69,7 @@ nav {
   padding-top: 10px;
 }
 
-img{
+img {
   border-radius: 10px;
 }
 
@@ -73,41 +82,32 @@ img{
   margin-top: 10px;
 }
 
-/* Wine Pairing Styles */
 h4 {
   margin-top: 20px;
-  color: #8a2f58; /* A wine-like color */
+  color: #8a2f58; /* wine-like color */
 }
 
-Button {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
+/* Sticky footer style */
 footer {
   background-color: #808080;
   height: 75px;
+  width: 100%;
 }
 
-/* ... Additional styles for filters, favorites, and other elements ... */
+/* Additional styles */
 
 .recipe-button {
-  background-color: #5a67d8; /* Light blue color */
-  color: #fff; /* White text color */
+  background-color: #5a67d8;
+  color: #fff;
   padding: 10px 20px;
   border: none;
-  border-radius: 10px; /* Rounded edges */
+  border-radius: 10px;
   cursor: pointer;
   margin: 5px;
 }
 
 .recipe-button:hover {
-  background-color: #4863c2; /* Darker blue on hover */
+  background-color: #4863c2;
 }
 
 h3 {
@@ -115,33 +115,42 @@ h3 {
   font-style: bolder;
 }
 
-/* HERO IMAGE SECTION */
+/* HERO IMAGE SECTION Styles */
 
-.hero-image {
-  background-image: url(/assets/Images/VineDine_mainImage.jpg);
-  height: 80vh;
+.hero-image, .hero-image-search {
+  background-image: url(../Images/VineDine_mainImage.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+
+.hero-image {
+  height: 60vh;
 }
 
 .hero-image-search {
-  background-image: url(/assets/Images/VineDine_mainImage.jpg);
   height: 35vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
 }
 
 .hero-text {
+  background-color: #808080;
+  height: fit-content;
+  width: fit-content;
+  min-width: 40vw;
   text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+
+  /* Add these lines for vertical centering of the content inside the div */
+  display: flex;
+  justify-content: center; /* For horizontal centering, just in case */
+  flex-direction: column;
+  padding: 2%;
+  border-radius: 5px;
 }
 
 .hero-input {
@@ -151,7 +160,7 @@ h3 {
 }
 
 .main-text {
-  font-size: 300%;
+  font-size: 200%;
   font-style: italic;
   padding-bottom: 20px;
 }
@@ -161,15 +170,65 @@ h3 {
   color: black;
 }
 
- @media screen and (max-width: 1377px) {
+@media screen and (max-width: 1377px) {
   .hero-text {
     padding-top: 25px;
   }
- }
+}
 
- /* FAVOURITES PAGE */
- .favorites {
+.favorites {
   width: 40%;
   float: left;
   height: 100vh;
- }
+}
+
+/* Adjustments to make recipe cards stack vertically */
+
+#results {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* test code */
+
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.project-box {
+  flex: 1 1 calc(33.333% - 20px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.project-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+}
+
+.project-box h3, .project-box p, .project-box ul {
+  padding: 8px;
+}
+
+.project-box:hover {
+  transform: scale(1.05);
+}
+
+#maincontent {
+  flex: 1;  /* This lets the main content area grow and take up any available space */
+  padding-top: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 1%;
+}
