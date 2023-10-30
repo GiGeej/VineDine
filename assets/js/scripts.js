@@ -70,33 +70,30 @@ async function displayRecipe(recipe) {
     for (let i = 0; i < cocktail.ingredients.length; i++) {
       cocktailIngredientsList += `<li>${cocktail.measures[i]} ${cocktail.ingredients[i]}</li>`;
     }
-    cocktailIngredientsList += '</ul>';
+    cocktailIngredientsList += '</ul';
 
     // Construct the Google search URL using the encoded cocktail name followed by "cocktail"
     const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(cocktail.name + ' cocktail')}`;
 
-
     const recipeCard = `
-    <div class="project-grid">
-
-    <div class="project-box">
-        <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
-            <img src="${recipe.image}" alt="${recipe.title}">
-            <h3>${recipe.title}</h3>
-            <p>${recipeDetails.summary || "No description available."}</p>
-        </a>
-    </div>
-
-    <div class="project-box">
-        <a href="${googleSearchUrl}" target="_blank">
-            <img src="${cocktail.image}" alt="${cocktail.name}">
-            <h3>${cocktail.name}</h3>
-            <p>${cocktail.description}</p>
-            ${cocktailIngredientsList}
-        </a>
-    </div>
-
-    `;
+    <div class="project-grid" id="container-for-box">
+      <div class="project-box recipe-box" id="recipe-box">
+          <a href="${recipeDetails.sourceUrl || "#"}" target="_blank">
+          <img src="${recipe.image}" alt="${recipe.title}"> 
+          <h3>${recipe.title}</h3>
+          <p>${recipeDetails.summary || "No description available."}</p>
+          </a>
+          <button class="heart-icon">  ❤️ Add to Favourites ❤️  </button>
+      </div>
+      <div class="project-box">
+          <a href="${googleSearchUrl}" target="_blank">
+              <img src="${cocktail.image}" alt="${cocktail.name}">
+              <h3>${cocktail.name}</h3>
+              <p>${cocktail.description}</p>
+              ${cocktailIngredientsList}
+          </a>
+      </div>
+    </div>`;
 
     // Update the results section
     resultsSection.innerHTML += recipeCard;
@@ -107,6 +104,7 @@ async function displayRecipe(recipe) {
     });
   });
 }
+
 
 const homeReturn = document.getElementById("home");
 homeReturn.addEventListener("click", function () {
@@ -126,41 +124,47 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// TODO: Functions for saving and displaying favorite recipes using client-side storage.
 
-// Event listener for the heart emoji button using event delegation
-// ...
+document.addEventListener("DOMContentLoaded", function () {
+  resultsSection.addEventListener("click", function (event) {
 
-// Event listener for the heart emoji button using event delegation
-resultsSection.addEventListener("click", function (event) {
-  const heartButton = event.target.closest(".heart-icon");
 
-  if (heartButton) {
-    // Get the recipe card associated with the clicked heart button
-    const recipeCard = heartButton.closest(".card");
+    const heartButton = event.target.closest(".heart-icon");
 
-    // Access recipe data from the card (you can customize this based on your data structure)
-    const recipeTitle = recipeCard.querySelector("h3").textContent;
-    const recipeImage = recipeCard.querySelector("img").src;
-    const recipeDetails = recipeCard.querySelector("p").textContent;
+    if (heartButton) {
+      // Get the recipe card associated with the clicked heart button
+      const recipeCard = heartButton.closest(".recipe-box");
 
-    // Create an object to store recipe data
-    const savedRecipe = {
-      title: recipeTitle,
-      url: recipeImage, // Update this to store the image URL or other relevant data
-      details: recipeDetails,
-    };
+      // Access recipe data from the card (you can customize this based on your data structure)
+      const recipeTitle = recipeCard.querySelector("h3").textContent;
+      const recipeImage = recipeCard.querySelector("img").src;
+      const recipeDetails = recipeCard.querySelector("p").textContent;
+      const recipeUrl = recipeCard.querySelector("a").href;
 
-    // Generate a unique key for this recipe using the recipe title
-    const recipeKey = "recipe_" + recipeTitle.replace(/\s/g, "_");
+      // Create an object to store recipe data
+      const savedRecipe = {
+        title: recipeTitle,
+        img: recipeImage, // Update this to store the image URL or other relevant data
+        details: recipeDetails,
+        url: recipeUrl,
+      };
 
-    // Save the recipe to local storage
-    localStorage.setItem(recipeKey, JSON.stringify(savedRecipe));
+      // Generate a unique key for this recipe using the recipe title
+      const recipeKey = "recipe_" + recipeTitle.replace(/\s/g, "_");
 
-    // Indicate that the recipe is saved, e.g., change the heart color or style
-    heartButton.classList.add("saved-heart");
-  }
+      // Save the recipe to local storage
+      localStorage.setItem(recipeKey, JSON.stringify(savedRecipe));
+
+      // Indicate that the recipe is saved, e.g., change the heart color or style
+      heartButton.classList.add("saved-heart");
+    }
+  });
 });
+
+
+
+
+
 
 // URL of the API
 const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
@@ -211,3 +215,4 @@ document
   .addEventListener("click", fetchAndDisplayCocktail);
 
 // ...
+

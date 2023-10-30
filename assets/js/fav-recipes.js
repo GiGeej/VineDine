@@ -1,6 +1,6 @@
 // DOM Elements
 const favoritesSection = document.getElementById("favorites");
-const recipeDisplay = document.getElementById("recipe-diplay");
+const recipeDisplay = document.getElementById("recipe-display");
 
 //Function to display saved recipes
 function displaySavedRecipes() {
@@ -31,7 +31,8 @@ function displayRecipe(recipe) {
     "rounded-lg",
     "p-2",
     "text-white",
-    "favourite-btn"
+    "favourite-btn",
+    "saved-recipe"
   );
   recipeButton.textContent = recipe.title;
 
@@ -43,7 +44,7 @@ function displayRecipe(recipe) {
 favoritesSection.addEventListener("click", function (event) {
   if (event.target.tagName === "BUTTON") {
     const recipeTitle = event.target.textContent;
-    const key = "recipe_" + "fav"; // Use the same key pattern used for saving
+    const key = "recipe_" + recipeTitle.replace(/\s/g, "_");
 
     // Retrieve saved recipe and details from localStorage
     const savedRecipe = JSON.parse(localStorage.getItem(key));
@@ -52,33 +53,31 @@ favoritesSection.addEventListener("click", function (event) {
     if (savedRecipe) {
       const recipeDetails = savedRecipe.details;
       const recipeUrl = savedRecipe.url;
+      const recipeImg = savedRecipe.img;
 
+      // Clear the existing content in recipeDisplay
+      recipeDisplay.classList.remove("hidden");
+      recipeDisplay.innerHTML = "";
 
-      // Find Elements on the HTML Page
-      const cardTitle = document.getElementById("recipe-title");
-      const cardDescription = document.getElementById("recipe-description");
-      const cardURL = document.getElementById("recipe-URL");
+      const recipeCard = `
+        <a href="${recipeUrl || "#"}" target="_blank">
+        <img src="${recipeImg}" alt="${recipeTitle}">
+        <h3>${recipeTitle}</h3>
+        <p>${recipeDetails}</p>
+        </a>
+      `;
 
-      // Add Text Content to the Page
-      cardTitle.textContent = recipeTitle;
-      cardDescription.textContent = recipeDetails;
-      cardURL.textContent = recipeUrl;
-
-      // Redirect to recipe details URL if available
-      if (recipeDetails.sourceUrl) {
-        window.location.href = recipeDetails.sourceUrl;
-      }
+      // Append the new recipe card
+      recipeDisplay.innerHTML += recipeCard;
     }
   }
 });
 
 
+
 // Ensure the function to display saved recipes is called when the DOM is ready
 document.addEventListener("DOMContentLoaded", displaySavedRecipes);
 
-function displayCard(recipe) {
-
-}
 
 
 
@@ -86,4 +85,3 @@ function displayCard(recipe) {
 
 
 
- 
