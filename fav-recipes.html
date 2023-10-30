@@ -15,41 +15,40 @@
 
   <body class="bg-gray-100">
     <!-- Navbar / Header -->
-    <nav class="p-5 text-white">
+    <nav class="p-5 text-white fav-nav">
       <div class="flex items-center justify-between">
         <h1 class="text-xl nav-main">Your Favourite Recipes</h1>
         <!-- Navigation Links -->
-        <div class="space-x-3">
+        <div class="space-x-3 nav-links">
           <a href="index.html" class="text-white">Home</a>
           <a href="fav-recipes.html" class="text-white">Favorited Recipes</a>
         </div>
       </div>
     </nav>
     <!-- Main Content Area -->
-    <main class="p-5 bg-gray-100">
+    <main class="p-5 bg-gray-100 maincontent">
       <!-- Favorites Section (initially hidden) -->
-      <div class="favorites" id="favorites">
-        <h2 class="">Your Favorites:</h2>
-        <!-- Favorited recipes will be displayed here -->
+      <div class="favorites" >
+        <h3>Your Favorites:</h3>
+        <ul id="favorites">
+          <!-- Favorited recipes will be displayed here -->
+        </ul>
       </div>
-      <div id="recipe-display">
-        <h2 id="recipe-title"></h2>
-          <p id="recipe-description"></p>
-          <p id="recipe-URL"></p>
+      <div id="recipe-display" class="recipe-display hidden">
+        
       </div>
     </main>
 
-   <!-- <footer>
+   <footer>
       <footer class="p-5 text-white">
           <div class="flex items-center justify-between">
             <h1 class="text-xl nav-main">Find Us @VineDine</h1>
-Navigation Links
-            <div class="space-x-10">
+            <div class="space-x-10 footer-info">
               <a> © Vine Dine 2023 </a>
-              <a href="fav-recipes.html" class="text-white">View Your Favorited Recipes</a>
+              <a href="index.html" class="text-white">Find Your Next Recipe</a>
             </div>
           </div>
-      </footer> -->
+      </footer>
 
     <script src="./assets/js/fav-recipes.js"></script>
   </body>

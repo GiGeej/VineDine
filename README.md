@@ -1,3 +1,4 @@
+
 # VineDine: Your Personal Recipe Assistant
 
 VineDine is your go-to application for culinary inspiration. Say goodbye to the age-old question of "What's for dinner?" or "What can I make with the ingredients I have?" VineDine has got you covered! This web application not only suggests delectable recipes based on the ingredients you have in your kitchen but also adds a fun twist by suggesting a random cocktail to complement your meal. It's the perfect companion for both aspiring and seasoned home chefs.
