@@ -1,114 +1,49 @@
-# VineDine
 
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+# VineDine: Your Personal Recipe Assistant
 
-## About the Project
-VineDine is an application that helps users discover specific recipes they can prepare using ingredients they already have at home. This program simplifies the process of meal planning and reduces food waste by offering recipe suggestions based on available ingredients.
+VineDine is your go-to application for culinary inspiration. Say goodbye to the age-old question of "What's for dinner?" or "What can I make with the ingredients I have?" VineDine has got you covered! This web application not only suggests delectable recipes based on the ingredients you have in your kitchen but also adds a fun twist by suggesting a random cocktail to complement your meal. It's the perfect companion for both aspiring and seasoned home chefs.
 
-### Features
-* **Ingredients Search**: users can input ingredients in which they already have, allowing the recipes to be specific to the avaliable ingredients
-* **Detailed Recipes**: The application outputs detail;ed recipes with external links to the relevant recipe selected
-* **Save Recipes**: users can save the recipes to their page, allowing them to return to their favourite recipes they may want to use again
-* **Drink Pairing**: each recipe will be paired with a relevant cocktail, allowing users to enjoy their meal with a specialised drink. 
+![VineDine includes a search option where you input ingredients you may have at home.](./VineDine/assets/Images/VineDine%20homepage.png)
 
-### Built With
+## Features
 
-[![Bulms][bulma.io]][bulma-url]
-[![Tailwind][tailwindui.com]][tailwind-url]
+VineDine offers the following exciting features:
 
-## Getting Started
+Recipe Suggestions: VineDine uses the Spoonacular API to provide you with an extensive range of recipes that you can prepare using the ingredients available in your kitchen. Simply input your ingredients, and VineDine will suggest delicious recipes for you to try.
 
-### Installation
-To access and make changes to the code, clone the repository to your local drive.
-```sh
-git clone https://github.com/GiGeej/VineDine.git
+Cocktail Pairing: Spice up your dining experience with a random cocktail suggestion. The application integrates with The Cocktail DB API to recommend a complementary cocktail that pairs perfectly with your chosen recipe. It's the ideal way to elevate your meal and impress your guests.
 
-```
-## Usage
-1. Open the web application (https://gigeej.github.io/VineDine/)
-2. Input the ingredients you have on hand (comma-seperated)
-3. Click "find recipes", and allow the application to load specific recipes using your on hand ingredients
-4. Save recipes by adding them to your favourite section, allowing you to go back and access
+User-Friendly Interface: With a sleek and intuitive design, VineDine makes it easy to navigate and find the culinary inspiration you need. The user interface is built using HTML and Tailwind CSS to ensure a smooth and responsive experience.
 
-## Roadmap
-- [x] Allow users to find specified recipes with on hand items
-- [x] Allow users to save favourite recipes for later access
-- [x] Allow users to have paired drink suggestions with outputted recipe
-- [ ] Allow users to have dietary requirements input, for a more specialised recipe output
-- [ ] multi-language support
-    - [ ] Chinese
-    - [ ] Spanish
+Getting Started
+To get started with VineDine, follow these simple steps:
 
-## Contributing
-Contributing to an open source community is a great way to learn and create on new skills, and is **greatly appreciated**.
-If you have a suggestion that may help adapt and benefit this site, please fork the repository and create a pull request. You alternatively can open an issue in GitHub with the tag "project-improvement".
+Enter the ingredients you have on hand in the provided input field.
 
-1. Fork the Project
-2. Create your Feature Branch
- ```sh
-git checkout -b feature/ProjectImprovement
-```
- 
-3. Commit your Changes 
-```sh
-git commit -m 'Add some Project Improvements'
-```
+Click the "Find recipe" button to receive a curated recipe suggestion.
 
-4. Push to the Branch 
-```sh
-git push origin feature/AmazingFeature
-```
+Enjoy your culinary journey with VineDine!
 
-5. Open a Pull Request
+# Technology Stack
 
-## License
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+VineDine is built with a combination of technologies, including:
 
-## Contact
+JavaScript: The core functionality of VineDine is implemented using JavaScript, making the application dynamic and responsive.
 
-Gigi - (https://github.com/gigeej/)
+HTML: The structure of the application is designed with HTML, providing a solid foundation for the user interface.
 
-Project Link: [https://github.com/gigeej/vinedine](https://github.com/gigeej/vinedine)
+Tailwind CSS: Tailwind CSS is used for styling, ensuring a clean and visually appealing layout for the application.
 
-## Acknowledgements
+# API Integration
 
+VineDine relies on two external APIs to provide you with the best recipe and cocktail recommendations:
 
+Spoonacular API: Used for food suggestions, Spoonacular offers an extensive database of recipes, making it easy to find the perfect dish based on your available ingredients.
 
+The Cocktail DB API: For cocktail suggestions, The Cocktail DB API offers a wide selection of cocktail recipes that are expertly paired with your chosen meal.
 
+# License
 
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-
-
-
-
-<!-- Markdown Links + Images -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[bulma.io]: https://bulma.io/images/bulma-logo.png
-[bulma-url]: https://bulma.io/
-[tailwindui.com]: https://tailwindcss.com/_next/static/media/tailwindcss-logotype-white.944c5d0ef628083bb316f9b3d643385c86bcdb3d.svg
-[tailwind-url]: https://tailwindui.com/
-
-
+VineDine is all about bringing culinary creativity to your fingertips. We hope you enjoy using it as much as we enjoyed creating it! Bon appétit and cheers! 🍽🍹

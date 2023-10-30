@@ -78,10 +78,3 @@ favoritesSection.addEventListener("click", function (event) {
 // Ensure the function to display saved recipes is called when the DOM is ready
 document.addEventListener("DOMContentLoaded", displaySavedRecipes);
 
-
-
-
-
-
-
-
