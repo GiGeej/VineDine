@@ -53,7 +53,6 @@ favoritesSection.addEventListener("click", function (event) {
       const recipeDetails = savedRecipe.details;
       const recipeUrl = savedRecipe.url;
 
-
       // Find Elements on the HTML Page
       const cardTitle = document.getElementById("recipe-title");
       const cardDescription = document.getElementById("recipe-description");
@@ -72,18 +71,7 @@ favoritesSection.addEventListener("click", function (event) {
   }
 });
 
-
 // Ensure the function to display saved recipes is called when the DOM is ready
 document.addEventListener("DOMContentLoaded", displaySavedRecipes);
 
-function displayCard(recipe) {
-
-}
-
-
-
-
-
-
-
- 
+function displayCard(recipe) {}
